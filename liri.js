@@ -28,7 +28,7 @@ function checkAction() {
 
     // Movies
     else if (action === "movie-this") {
-    actionMovies();
+        actionMovies();
     }
 
     // Do this
