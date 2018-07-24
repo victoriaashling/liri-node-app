@@ -10,7 +10,12 @@ var spotify = new Spotify(keys.spotify);
 var twitter = new Twitter(keys.twitter);
 
 var action = process.argv[2];
-var input = process.argv[3];
+var input = "";
+    for (var i = 3; i < process.argv.length; i++) {
+        input += process.argv[i] + " ";
+    };
+var loggedData;
+
 
 checkAction();
 
@@ -107,3 +112,15 @@ function actionDo() {
         checkAction();
     });
 };
+
+function logData() {
+    var stuff = action + input + loggedData;
+    fs.appendFile("log.txt", stuff, function(error, data) {
+        if (error) {
+            return console.log(error);
+        }
+        else {
+            console.log("Content Added!");
+        }
+    })
+}
